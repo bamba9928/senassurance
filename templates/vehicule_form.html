@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+
+{% block content %}
+  <!-- Inclure le CSS et le JS de flatpickr -->
+<button class="btn btn-secondary" onclick="history.back()">Retour</button>
+    </script>
+  <h2 class="text-center">Entrer Detail Vehicule et Client</h2>
+  <form method="post" class="container mt-4">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary">Enrigistrer</button>
+    </div>
+  </form>
+
+
+{% endblock %}
+{% block extra_js %}
+
+
+{% endblock %}

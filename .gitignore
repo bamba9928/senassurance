@@ -1,0 +1,17 @@
+/horusapp/tests.py
+# Environnement virtuel
+.venv/
+env/
+venv/
+
+# Fichiers Python compilés
+*.pyc
+__pycache__/
+
+# Fichiers de configuration locaux
+*.sqlite3
+db.sqlite3
+*.env
+
+# Dossiers statiques collectés
+/staticfiles/
