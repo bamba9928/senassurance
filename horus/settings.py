@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-_ql8s@0tgti7n5#brgfbyx16)$!qlh(5v71ys@4o)=#pa)#l70
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['horuservices.cloud', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -44,7 +44,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # Jazzmin Settings
 JAZZMIN_SETTINGS = {
-    "site_title": "Horus Admin",
+    "site_title": "Horus Services",
     "site_header": "Horus Global Services",
     "welcome_sign": "Horus Admin",
     "copyright": "Horus Global Services",
