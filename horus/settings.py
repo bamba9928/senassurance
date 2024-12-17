@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-_ql8s@0tgti7n5#brgfbyx16)$!qlh(5v71ys@4o)=#pa)#l70
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['horuservices.cloud', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
