@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  # Si vous voulez utiliser des services tiers
     'django_filters',
     'crispy_forms',
-    'bootstrap5',
     'crispy_bootstrap5',
 ]
 
@@ -141,7 +140,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 # Configuration WhiteNoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STORAGES = {
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
