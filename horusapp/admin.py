@@ -1,6 +1,9 @@
+import datetime
+
 from django.contrib import admin
 from django.contrib.admin.sites import site
 from django.http import HttpResponse
+from django.utils import timezone
 import openpyxl
 from reportlab.pdfgen import canvas
 from .models import Vehicule, Bureau, Apporteur
@@ -41,6 +44,18 @@ def exporter_en_pdf(modeladmin, request, queryset):
 exporter_en_pdf.short_description = "Exporter en PDF"
 
 
+# Valeur d'un champ convertie en type accepté par openpyxl
+def valeur_excel(obj, field):
+    valeur = getattr(obj, field.name)
+    # Clé étrangère (utilisateur, bureau...) : on exporte son libellé
+    if field.is_relation:
+        return str(valeur) if valeur is not None else None
+    # Excel ne gère pas les fuseaux horaires : date/heure locale sans fuseau
+    if isinstance(valeur, datetime.datetime) and timezone.is_aware(valeur):
+        return timezone.localtime(valeur).replace(tzinfo=None)
+    return valeur
+
+
 # Exportation en Excel
 def exporter_en_excel(modeladmin, request, queryset):
     wb = openpyxl.Workbook()
@@ -51,7 +66,7 @@ def exporter_en_excel(modeladmin, request, queryset):
     ws.append(columns)
 
     for obj in queryset:
-        row = [getattr(obj, field.name) for field in modeladmin.model._meta.fields]
+        row = [valeur_excel(obj, field) for field in modeladmin.model._meta.fields]
         ws.append(row)
 
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')

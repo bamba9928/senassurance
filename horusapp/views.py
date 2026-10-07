@@ -196,9 +196,11 @@ class VehiculeDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'vehicule_confirm_delete.html'
     success_url = reverse_lazy('vehicule_list')
 
-    def delete(self, request, *args, **kwargs):
+    # Depuis Django 4.0, DeleteView traite le POST via form_valid() :
+    # une surcharge de delete() n'est plus appelée.
+    def form_valid(self, form):
         messages.success(self.request, VEHICLE_DELETED_SUCCESS)
-        return super().delete(request, *args, **kwargs)
+        return super().form_valid(form)
 
 
 # Page d'erreur personnalisée 404
