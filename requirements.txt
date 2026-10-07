@@ -1,4 +1,4 @@
-aiosmtplib==1.1.7
+aiosmtplib==5.1.2
 anyio==3.7.1
 asgiref==3.8.1
 beautifulsoup4==4.12.3
