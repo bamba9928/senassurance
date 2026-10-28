@@ -11,7 +11,7 @@ Django==5.2.18
 et-xmlfile==2.0.0
 mysqlclient==2.2.6
 openpyxl==3.1.5
-pillow==12.3.0
+pillow==13.0.0
 reportlab==4.5.1
 sqlparse==0.6.0
 tzdata==2026.5
